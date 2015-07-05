@@ -3,15 +3,15 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
+    android:background="#e6ffda">
 
     <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_below="@+id/textResult"
-        android:layout_alignLeft="@+id/textResult"
-        android:layout_alignStart="@+id/textResult"
-        android:layout_marginTop="36dp">
+        android:id="@+id/gridLayout"
+        android:layout_below="@+id/textError"
+        android:layout_centerHorizontal="true">
 
         <Button
             android:layout_width="wrap_content"
@@ -224,24 +224,23 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="0"
         android:id="@+id/textResult"
-        android:layout_marginLeft="26dp"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="119dp"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textCalculation"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:background="#e4ff1b"
+        android:padding="20dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/textCalculation"
-        android:background="#e8ffdd"
-        android:paddingLeft="10dp"
-        android:text=""
-        android:paddingTop="32dp"
+        android:background="#ffe536"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:padding="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -249,11 +248,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/textError"
         android:textColor="#ff552e"
+        android:layout_marginTop="74dp"
         android:layout_below="@+id/textCalculation"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="0dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
