@@ -31,6 +31,8 @@ public class MainActivity extends ActionBarActivity {
         Button button = (Button) v;
         calculationString = (String) button.getText().toString();
 
+        string2 = ""; // To hold what has just been entered, and will be added to string
+
         if (!calculationString.contains("+") && !calculationString.contains("-") && !calculationString.contains("/") && !calculationString.contains("*")){
             string2 = string2 + calculationString;
             if (!arrayList.isEmpty()){ // Remove the value that was last entered
