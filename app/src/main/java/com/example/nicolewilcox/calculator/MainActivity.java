@@ -58,6 +58,7 @@ public class MainActivity extends ActionBarActivity {
         Button button = (Button) v;
         String string = (String) button.getText().toString();
         boolean isValid = false; // True if the calculation has a valid structure
+        TextView textCalculation = (TextView) findViewById(R.id.textCalculation); // Calculation field
 
         int numLoops = arrayList.size();
         System.out.println("ARRAY SIZE: " + arrayList.size());
@@ -89,11 +90,14 @@ public class MainActivity extends ActionBarActivity {
             else {
                 while (numLoops != 1 && isValid == true) {
 
-                    if (numLoops == 2) { // If the user enters only one number and one operand (in that order)
+                    if (numLoops == 2) { // If the user enters only one number and one operand (in that order) e.g. 2 +
                         if (arrayList.get(1).equals("+") || arrayList.get(1).equals("-") || arrayList.get(1).equals("/") || arrayList.get(1).equals("*")) {// If we are looking at a symbol then the next character must not be a symbol
                             System.out.println("WFUBRADBVEFJNVJDFNBJNDFJBNFJDV_))))000000000000000");
                             textError.setText("Invalid operation");
                             break;
+                        }
+                        else{ // The user enters one operand and one number e.g. + 2
+                           continue;
                         }
                     }
 
@@ -158,15 +162,16 @@ public class MainActivity extends ActionBarActivity {
                 System.out.println("total: " + total);
 
                 textResult.setText(Integer.toString(total)); // Display the calculation
+                textCalculation.setText(Integer.toString(total)); // Display the new value
                 total = 0;
                 string2 = "";
 //        textResult.setText(arrayList.toString());
 
-                int i = arrayList.size();
-                while (i > 0) { // Remove everything from arrayList
-                    arrayList.remove(i - 1); // Account for indexing from 0
-                    i--;
-                }
+//                int i = arrayList.size();
+//                while (i > 0) { // Remove everything from arrayList
+//                    arrayList.remove(i - 1); // Account for indexing from 0
+//                    i--;
+//                }
             }
         }
     }
