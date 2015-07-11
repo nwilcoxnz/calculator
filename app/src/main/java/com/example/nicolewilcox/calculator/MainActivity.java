@@ -24,6 +24,7 @@ public class MainActivity extends ActionBarActivity {
     String calculationString = ""; // To hold what is to be displayed in the calculation (upper) field
     String string2 = ""; // To hold what has just been entered, and will be added to string
     int total = 0; // Result of the calculation(s)
+    int entered = 0; // Integer version of the string that user has entered
 
     public void onClick (View v){ // What happens when you click buttons 0 - 9, "+', "-", "/" or "*"
 
@@ -31,14 +32,17 @@ public class MainActivity extends ActionBarActivity {
         Button button = (Button) v;
         calculationString = (String) button.getText().toString();
 
-        string2 = ""; // To hold what has just been entered, and will be added to string
-
         if (!calculationString.contains("+") && !calculationString.contains("-") && !calculationString.contains("/") && !calculationString.contains("*")){
-            string2 = string2 + calculationString;
-            if (!arrayList.isEmpty()){ // Remove the value that was last entered
-                arrayList.remove(arrayList.size()-1);
+            entered = Integer.parseInt(string2 + calculationString);
+            if(entered < 999999999) { // Make sure the input isn't exceeding the value of an integer
+                string2 = string2 + calculationString;
             }
+            if (!arrayList.isEmpty()) { // Remove the value that was last entered so it can be replaced 
+                arrayList.remove(arrayList.size() - 1);
+            }
+            System.out.println("This is what's being added: " + string2);
             arrayList.add(string2);
+
         }
 
         else {
