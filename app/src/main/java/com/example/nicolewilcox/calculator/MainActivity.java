@@ -37,7 +37,7 @@ public class MainActivity extends ActionBarActivity {
             if(entered < 999999999) { // Make sure the input isn't exceeding the value of an integer
                 string2 = string2 + calculationString;
             }
-            if (!arrayList.isEmpty()) { // Remove the value that was last entered so it can be replaced 
+            if (!arrayList.isEmpty()) { // Remove the value that was last entered so it can be replaced
                 arrayList.remove(arrayList.size() - 1);
             }
             System.out.println("This is what's being added: " + string2);
