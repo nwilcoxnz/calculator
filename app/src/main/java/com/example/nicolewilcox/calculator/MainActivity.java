@@ -83,20 +83,19 @@ public class MainActivity extends ActionBarActivity {
             }
 
             if (numLoops == 1) { // If you've only entered one number or symbol
-                // Make sure the data entered is a number
+                // Make sure the data entered is a number and not a symbol
                 if (arrayList.get(0).equals("+") || arrayList.get(0).equals("-") || arrayList.get(0).equals("/") || arrayList.get(0).equals("*")) {
                     textError.setText("Invalid operation");
                 } else {
                     total = Integer.parseInt(arrayList.get(0));
                 }
-                textResult.setText(Integer.toString(total)); // Display the calculation
+                textResult.setText(Integer.toString(total)); // Display the result
             }
             else {
-                while (numLoops != 1 && isValid == true) {
+                while (numLoops != 1 && isValid == true) { // Complete the calculation
 
                     if (numLoops == 2) { // If the user enters only one number and one operand (in that order) e.g. 2 +
                         if (arrayList.get(1).equals("+") || arrayList.get(1).equals("-") || arrayList.get(1).equals("/") || arrayList.get(1).equals("*")) {// If we are looking at a symbol then the next character must not be a symbol
-                            System.out.println("WFUBRADBVEFJNVJDFNBJNDFJBNFJDV_))))000000000000000");
                             textError.setText("Invalid operation");
                             break;
                         }
@@ -117,17 +116,38 @@ public class MainActivity extends ActionBarActivity {
                             numLoops = arrayList.size(); // Re-calculate array size/number of loops
                         } else { // Evaluate the first calculation
                             if (arrayList.get(1).contains("+")) {
-                                total = (Integer.parseInt(arrayList.get(0))) + ((Integer.parseInt(arrayList.get(2)))); // Add the first and second digits
+                                if (Integer.parseInt(arrayList.get(0)) + (Integer.parseInt(arrayList.get(2))) < 99999999) { // Make sure the calculation stays within the realms of an integer
+                                    total = Integer.parseInt(arrayList.get(0)) + (Integer.parseInt(arrayList.get(2))); // Add the first and second digits
+                                } else {
+                                    textError.setText("Invalid - number too large");
+                                    break;
+                                }
                             } else if (arrayList.get(1).contains("-")) {
-                                total = (Integer.parseInt(arrayList.get(0))) - (Integer.parseInt(arrayList.get(2))); // Subtract the first and second digits
+                                if(Integer.parseInt(arrayList.get(0)) - (Integer.parseInt(arrayList.get(2))) < 99999999) { // Make sure the calculation stays within the realms of an integer
+                                    total = Integer.parseInt(arrayList.get(0)) - (Integer.parseInt(arrayList.get(2))); // Subtract the first and second digits
+                                } else {
+                                    textError.setText("Invalid - number too large");
+                                    break;
+                                }
                             } else if (arrayList.get(1).contains("*")) {
-                                total = (Integer.parseInt(arrayList.get(0))) * ((Integer.parseInt(arrayList.get(2)))); // Multiply the first and second digits
+                                if (Integer.parseInt(arrayList.get(0)) * (Integer.parseInt(arrayList.get(2))) < 99999999) { // Make sure the calculation stays within the realms of an integer
+                                    total = Integer.parseInt(arrayList.get(0)) * (Integer.parseInt(arrayList.get(2))); // Multiply the first and second digits
+                                } else {
+                                    textError.setText("Invalid - number too large");
+                                    break;
+                                }
                             } else if (arrayList.get(1).contains("/")) {
                                 if (Integer.parseInt(arrayList.get(2)) == 0) { // Don't allow dividing by 0
                                     textError.setText("Invalid operation");
                                     break;
                                 }
-                                total = (Integer.parseInt(arrayList.get(0))) / (Integer.parseInt(arrayList.get(2))); // Divide the first and second digits
+                                if (Integer.parseInt(arrayList.get(0))/Integer.parseInt(arrayList.get(2)) < 99999999) { // Make sure the calculation stays within the realms of an integer
+                                    total = (Integer.parseInt(arrayList.get(0))) / (Integer.parseInt(arrayList.get(2))); // Divide the first and second digits
+                                }
+                                else { // Else do not complete the calculation
+                                    textError.setText("Invalid - number too large");
+                                    break;
+                                }
                             }
 
                             arrayList.remove(2); // Remove values that have been calculated
@@ -139,17 +159,38 @@ public class MainActivity extends ActionBarActivity {
                         }
                     } else if (numLoops == 3) { // If size of arrayList is 3 then you have one calculation
                         if (arrayList.get(1).contains("+")) {
-                            total = Integer.parseInt(arrayList.get(0)) + (Integer.parseInt(arrayList.get(2))); // Add the first and second digits
+                            if (Integer.parseInt(arrayList.get(0)) + (Integer.parseInt(arrayList.get(2))) < 99999999) { // Make sure the calculation stays within the realms of an integer
+                                total = Integer.parseInt(arrayList.get(0)) + (Integer.parseInt(arrayList.get(2))); // Add the first and second digits
+                            } else {
+                                textError.setText("Invalid - number too large");
+                                break;
+                            }
                         } else if (arrayList.get(1).contains("-")) {
-                            total = Integer.parseInt(arrayList.get(0)) - (Integer.parseInt(arrayList.get(2))); // Subtract the first and second digits
+                            if(Integer.parseInt(arrayList.get(0)) - (Integer.parseInt(arrayList.get(2))) < 99999999) { // Make sure the calculation stays within the realms of an integer
+                                total = Integer.parseInt(arrayList.get(0)) - (Integer.parseInt(arrayList.get(2))); // Subtract the first and second digits
+                            } else {
+                                textError.setText("Invalid - number too large");
+                                break;
+                            }
                         } else if (arrayList.get(1).contains("*")) {
-                            total = Integer.parseInt(arrayList.get(0)) * (Integer.parseInt(arrayList.get(2))); // Multiply the first and second digits
+                            if (Integer.parseInt(arrayList.get(0)) * (Integer.parseInt(arrayList.get(2))) < 99999999) { // Make sure the calculation stays within the realms of an integer
+                                total = Integer.parseInt(arrayList.get(0)) * (Integer.parseInt(arrayList.get(2))); // Multiply the first and second digits
+                            } else {
+                                textError.setText("Invalid - number too large");
+                                break;
+                            }
                         } else if (arrayList.get(1).contains("/")) {
                             if (Integer.parseInt(arrayList.get(2)) == 0) { // Don't allow dividing by 0
                                 textError.setText("Invalid operation");
                                 break;
                             }
-                            total = Integer.parseInt(arrayList.get(0)) / (Integer.parseInt(arrayList.get(2))); // Divide the first and second digits
+                            if (Integer.parseInt(arrayList.get(0)) / (Integer.parseInt(arrayList.get(2))) < 99999999) { // Make sure the calculation stays within the realms of an integer
+                                total = Integer.parseInt(arrayList.get(0)) / (Integer.parseInt(arrayList.get(2))); // Divide the first and second digits
+                            }
+                            else {
+                                textError.setText("Invalid - number too large");
+                                break;
+                            }
                         }
 
                         arrayList.remove(2); // Remove values that have been calculated
@@ -169,13 +210,6 @@ public class MainActivity extends ActionBarActivity {
                 textCalculation.setText(Integer.toString(total)); // Display the new value
                 total = 0;
                 string2 = "";
-//        textResult.setText(arrayList.toString());
-
-//                int i = arrayList.size();
-//                while (i > 0) { // Remove everything from arrayList
-//                    arrayList.remove(i - 1); // Account for indexing from 0
-//                    i--;
-//                }
             }
         }
     }
